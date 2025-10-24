@@ -1,50 +1,94 @@
 import 'package:flutter/material.dart';
 
-class ProfileCarde extends StatelessWidget {
-  const ProfileCarde({super.key});
+class ProfileCard extends StatelessWidget {
+  const ProfileCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-     home: Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: Text('Gavyn'),
+        title: const Text(
+          'My profile' ,
+            style: TextStyle(
+        backgroundColor: Colors.redAccent,
+            color: Colors.amberAccent,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        /**
-         * ROW & COLUMN BISA MEMILIKI BANYAK WIDGET
-         * ROW ITU KESAMPING 
-         * COLUMN ITU KEBAWAH
-         */
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center ,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            child: Text(
-              'NAMA',
-              style: TextStyle(
-                color: Colors.amber,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                backgroundColor: Colors.redAccent,
-                fontFamily: 'Arial', //Harus ada fontnya
-                  ),
-              ),
-          )
-          Text(
-            'UCUP GUERERO'
-            , style: TextStyle(
-              backgroundColor: Color.fromARGB(
-                200,
-                100,
-                100,
-                100,
-              )
-            ),)
-        ],
       ),
-   ),
-    debugShowCheckedModeBanner: false,
-    );
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 100, 
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              color: Colors.amberAccent,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.redAccent,
+                  spreadRadius: 5.0,
+                  blurRadius: 7.0,
+                  offset: Offset(0, 3),
+                )
+              ]
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20, 
+                    bottom: 50,
+                    ),
+                    /**
+                     * only : hanya meemberi satu posisi
+                     * symmertic : memberi jarak sumbu x / y
+                     * all : memberu semua jarak
+                     */
+                    child: Text('NAME',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Text(
+                    'Ucup Guerero',
+                     style: TextStyle
+                     (fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                color: Colors.redAccent,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Address'),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(),
+                      ],
+                    )
+                ],
+              )
+             ),
+          ],
+        ),
+        
+      ),
+    );  
   }
 }
