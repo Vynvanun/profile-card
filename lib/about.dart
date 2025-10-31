@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/detail-profile.dart';
  
 class AboutMe extends StatelessWidget {
   const AboutMe({super.key});
@@ -17,6 +18,8 @@ class AboutMe extends StatelessWidget {
     'https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870',
     'https://images.unsplash.com/photo-1459909633680-206dc5c67abb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=871',
   ];
+
+  final title = 'Gvyb Oke';
   /**
    * Tampilkan data image dari internet menggunakan listview
    * 
@@ -56,7 +59,7 @@ class AboutMe extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: Text(
-                    'Ucup Guerero'.toUpperCase(),
+                    title.toUpperCase(),
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -193,6 +196,46 @@ class AboutMe extends StatelessWidget {
                     ),
                   ],
                 ),
+                InkWell(
+                  onTap: () {
+                    
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailProfile(),));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.green,  
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Detail Profile', 
+                      style: TextStyle(
+                        fontFamily: 'Friendship',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        ),),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext)=> DetailProfile(title: title,)));
+
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(15,),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Detail profile'.toUpperCase(),
+                        ),
+                    ),
+                  ),
+                ),
+                
                 /**
                  * SCHEDULE
                  */
@@ -446,8 +489,10 @@ class AboutMe extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index){
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(backgroundImage: NetworkImage('${urlList[index]}'),
+                      child: CircleAvatar(backgroundImage: NetworkImage('${urlList[index]}'
                       ),
+                      radius: 100,
+                     ),
                     );
                   })
                 )
